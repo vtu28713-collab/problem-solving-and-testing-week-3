@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+import java.time.LocalDate;
+
+class Result {
+
+    public static String findDay(int month, int day, int year) {
+
+        LocalDate date = LocalDate.of(year, month, day);
+
+        return date.getDayOfWeek().toString();
+    }
+}
+
+public class Solution {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader bufferedReader =
+            new BufferedReader(new InputStreamReader(System.in));
+
+        BufferedWriter bufferedWriter =
+            new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String[] input = bufferedReader.readLine().split(" ");
+
+        int month = Integer.parseInt(input[0]);
+        int day = Integer.parseInt(input[1]);
+        int year = Integer.parseInt(input[2]);
+
+        String result = Result.findDay(month, day, year);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
